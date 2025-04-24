@@ -4,42 +4,70 @@
   <meta charset="UTF-8">
   <title>BRR3 Discord Bot – Meme, Trade, Win!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BRR3 – Najbardziej memiczny bot ekonomiczny na Discordzie. Quizy, trading, lootboxy, edukacja i dużo bananów.">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="description" content="BRR3 – The ultimate meme-powered crypto trading Discord bot. Quizzes, trading, lootboxes, AI education, and bananas.">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      background: linear-gradient(135deg, #f1c40f 0%, #6c5ce7 100%);
-      font-family: 'Roboto', Arial, sans-serif;
+    :root {
+      --main-bg: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+      --accent: #f1c40f;
+      --accent2: #6c5ce7;
+      --retro-pink: #ff4f81;
+      --retro-cyan: #00fff7;
+      --retro-blue: #00b4d8;
+      --retro-green: #39ff14;
+      --card-bg: rgba(26,26,46,0.95);
+      --border: 3px solid #6c5ce7;
+      --shadow: 0 8px 32px rgba(44, 62, 80, 0.25);
+    }
+    html, body {
       margin: 0;
-      color: #222;
+      padding: 0;
       min-height: 100vh;
+      background: var(--main-bg);
+      font-family: 'Roboto', Arial, sans-serif;
+      color: #fff;
+      box-sizing: border-box;
     }
     .container {
-      max-width: 700px;
-      margin: 40px auto;
-      background: rgba(255,255,255,0.95);
-      border-radius: 18px;
-      box-shadow: 0 8px 32px rgba(44, 62, 80, 0.15);
+      max-width: 900px;
+      margin: 48px auto 0 auto;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: var(--border);
       padding: 2.5rem 2rem 2rem 2rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
     .logo {
       width: 120px;
       border-radius: 50%;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 18px var(--retro-cyan);
+      background: #fff;
+      padding: 10px;
+      border: 2px solid var(--accent2);
+      animation: logo-float 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes logo-float {
+      0% { transform: translateY(0);}
+      100% { transform: translateY(-12px);}
     }
     h1 {
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 2.5rem;
-      margin: 0 0 0.5rem 0;
-      color: #6c5ce7;
-      letter-spacing: 1px;
+      font-family: 'Press Start 2P', Arial, sans-serif;
+      font-size: 2.2rem;
+      margin: 0 0 1rem 0;
+      color: var(--retro-pink);
+      letter-spacing: 2px;
+      text-shadow: 0 2px 0 #000, 0 0 8px var(--retro-cyan);
     }
     .subtitle {
-      font-size: 1.2rem;
-      color: #444;
-      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      color: var(--retro-cyan);
+      margin-bottom: 2.2rem;
+      font-family: 'Roboto', Arial, sans-serif;
+      text-shadow: 0 1px 0 #000;
     }
     .features {
       display: flex;
@@ -49,101 +77,156 @@
       margin-bottom: 2.5rem;
     }
     .feature {
-      background: #f9f9f9;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+      background: rgba(15,52,96,0.92);
+      border-radius: 14px;
+      border: 2px solid var(--retro-pink);
+      box-shadow: 0 2px 12px #000a;
       padding: 1.2rem 1rem;
-      width: 220px;
-      min-height: 140px;
+      width: 240px;
+      min-height: 150px;
       display: flex;
       flex-direction: column;
       align-items: center;
       font-size: 1rem;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature:hover {
+      transform: scale(1.04) rotate(-1deg);
+      box-shadow: 0 4px 24px var(--retro-cyan);
+      border-color: var(--retro-green);
     }
     .feature span {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
+      margin-bottom: 0.7rem;
+      text-shadow: 0 2px 0 #000, 0 0 8px var(--retro-green);
     }
     .cta {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
     }
     .cta-btn {
-      background: linear-gradient(90deg, #6c5ce7 0%, #f1c40f 100%);
+      background: linear-gradient(90deg, var(--retro-pink) 0%, var(--retro-cyan) 100%);
       color: #fff;
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 1.2rem;
-      padding: 0.9rem 2.2rem;
+      font-family: 'Press Start 2P', Arial, sans-serif;
+      font-size: 1.1rem;
+      padding: 1.1rem 2.5rem;
       border: none;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(44, 62, 80, 0.13);
+      box-shadow: 0 4px 16px var(--retro-cyan);
       transition: background 0.2s, transform 0.2s;
       text-decoration: none;
       display: inline-block;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 0 #000, 0 0 8px var(--accent2);
+      margin-bottom: 0.5rem;
     }
     .cta-btn:hover {
-      background: linear-gradient(90deg, #f1c40f 0%, #6c5ce7 100%);
-      transform: translateY(-2px) scale(1.03);
+      background: linear-gradient(90deg, var(--retro-green) 0%, var(--retro-pink) 100%);
+      transform: translateY(-2px) scale(1.04);
+      color: #222;
     }
     .footer {
       margin-top: 2.5rem;
-      color: #888;
-      font-size: 0.95rem;
+      color: #aaa;
+      font-size: 0.98rem;
+      font-family: 'Press Start 2P', Arial, sans-serif;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 0 #000;
     }
-    @media (max-width: 800px) {
+    .discord-badge {
+      display: inline-block;
+      background: #5865f2;
+      color: #fff;
+      font-family: 'Press Start 2P', Arial, sans-serif;
+      font-size: 0.9rem;
+      padding: 0.3rem 1rem;
+      border-radius: 18px;
+      margin-bottom: 1.2rem;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px #000a;
+      text-shadow: 0 1px 0 #000;
+      border: 2px solid #fff3;
+    }
+    .retro-glow {
+      color: var(--retro-green);
+      text-shadow: 0 0 8px var(--retro-green), 0 2px 0 #000;
+    }
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .container { max-width: 98vw; }
       .features { flex-direction: column; align-items: center; }
-      .feature { width: 90%; }
+      .feature { width: 95%; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 1.2rem 0.2rem; }
+      h1 { font-size: 1.2rem; }
+      .cta-btn { font-size: 0.95rem; padding: 0.8rem 1.2rem; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="https://cdn.discordapp.com/attachments/1218576908009578577/1228378939990550608/banana-brr3.png" alt="BRR3 Bot Logo" class="logo">
+    <div class="discord-badge">BRR3 BOT</div>
+    <img src="./banana-brr3.png" alt="BRR3 Bot Logo" class="logo" />
     <h1>BRR3 Discord Bot</h1>
     <div class="subtitle">
-      Najbardziej memiczny bot ekonomiczny na Discordzie.<br>
-      <b>Quizy, trading, lootboxy, edukacja i dużo bananów.</b>
+      The ultimate <span class="retro-glow">future-retro</span> meme-powered crypto trading bot.<br>
+      <b>Quizzes, trading, lootboxes, AI education, and bananas. Always bananas.</b>
     </div>
     <div class="features">
       <div class="feature">
         <span>🪙</span>
-        Ekonomia &amp; waluta<br>
-        <small>Zarabiaj, wydawaj, inwestuj i flexuj swój portfel.</small>
+        <b>Economy &amp; Currency</b><br>
+        <small>Earn, spend, invest, and flex your virtual wallet. Degens only.</small>
       </div>
       <div class="feature">
         <span>📈</span>
-        Paper Trading<br>
-        <small>Symulowany handel krypto bez ryzyka. Zostań bananowym traderem!</small>
+        <b>Paper Trading</b><br>
+        <small>Simulate crypto trading with zero risk. Become a banana whale!</small>
       </div>
       <div class="feature">
         <span>🎁</span>
-        Lootboxy &amp; nagrody<br>
-        <small>Otwieraj skrzynki, zdobywaj rzadkie itemy i tytuły.</small>
+        <b>Lootboxes &amp; Rewards</b><br>
+        <small>Open boxes, collect rare items, and show off your titles.</small>
       </div>
       <div class="feature">
         <span>🧠</span>
-        Quizy &amp; edukacja<br>
-        <small>Codzienne quizy, lekcje AI i memiczna nauka o krypto.</small>
+        <b>Quizzes &amp; AI Lessons</b><br>
+        <small>Daily quizzes, AI-powered lessons, and meme learning for all levels.</small>
       </div>
       <div class="feature">
         <span>🏆</span>
-        Rankingi &amp; osiągnięcia<br>
-        <small>Rywalizuj z innymi, zdobywaj odznaki i tytuły.</small>
+        <b>Leaderboards &amp; Achievements</b><br>
+        <small>Compete, earn badges, and climb the banana ranks.</small>
       </div>
       <div class="feature">
         <span>😂</span>
-        Memiczny humor<br>
-        <small>Każda komenda to szczypta sarkazmu i bananowej energii.</small>
+        <b>Meme Energy</b><br>
+        <small>Every command is a dose of sarcasm and banana-powered fun.</small>
       </div>
     </div>
     <div class="cta">
-      <a href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot&permissions=8" class="cta-btn">
-        ➕ Dodaj BRR3 na swój serwer
+      <a href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot&permissions=8" class="cta-btn" id="invite-btn">
+        ➕ Invite BRR3 to your server
       </a>
     </div>
     <div class="footer">
-      © 2024 BRR3 Bot &middot; Made by degens for degens 🍌
+      &copy; 2024 BRR3 Bot &middot; Made by degens for degens 🍌
     </div>
   </div>
+  <script>
+    // Example: Animate CTA button on scroll
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('invite-btn');
+      if (window.scrollY > 60) {
+        btn.style.boxShadow = '0 0 32px var(--retro-green)';
+        btn.style.transform = 'scale(1.07)';
+      } else {
+        btn.style.boxShadow = '0 4px 16px var(--retro-cyan)';
+        btn.style.transform = 'scale(1)';
+      }
+    });
+  </script>
 </body>
 </html>
